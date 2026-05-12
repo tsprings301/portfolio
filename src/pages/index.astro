@@ -1,11 +1,48 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+// 画像ファイルを「myImage」という名前で読み込みます
+import myImage from '../assets/my-work-oil_001.JPEG';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const artistName = "torisawa halu";
 ---
 
 <Layout>
-	<Welcome />
+    <main>
+        <h1>{artistName} のポートフォリオ</h1>
+        
+        <section class="gallery">
+            {/* 読み込んだ myImage を実際に表示する命令です */}
+            <Image 
+                src={myImage} 
+                alt="油彩作品 001" 
+                width={600} 
+                class="main-work"
+            />
+        </section>
+        
+        <p>ここに作品の説明やプロフィールを書いていきます。</p>
+    </main>
 </Layout>
+
+<style>
+    main {
+        margin: auto;
+        padding: 1rem;
+        width: 800px;
+        max-width: calc(100% - 2rem);
+        color: #333;
+        line-height: 1.6;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1em;
+    }
+    .main-work {
+        border-radius: 8px; /* 角を少し丸くしておしゃれに */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* 軽い影をつけて作品を浮かび上がらせます */
+        margin-bottom: 2rem;
+    }
+</style>
