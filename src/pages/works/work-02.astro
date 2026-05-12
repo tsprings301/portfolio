@@ -1,34 +1,38 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+// 拡張子が.jpgであることを確認してインポート
 import workImg from '../../assets/my-work-oil_002.jpg';
 ---
 
 <Layout title="敵を倒せ！ | WORKS | Haru Torisawa">
   <article class="work-detail">
+    <!-- 作品メイン画像 -->
     <div class="image-container">
       <Image src={workImg} alt="敵を倒せ！" class="main-image" />
     </div>
 
+    <!-- 作品情報セクション -->
     <div class="info-container">
       <header class="work-header">
         <h1>『敵を倒せ！』</h1>
-        <p class="year">2025年</p>
+        <p class="year">2026年（または制作年）</p>
       </header>
 
       <section class="spec">
         <p>素材：キャンバスに油彩</p>
-        <p>サイズ：F100（1620×1303mm）</p>
+        <p>サイズ：F100（1620×1303mm）など</p>
       </section>
 
       <section class="description">
         <p>
           "Defeat the Enemy!""<br />
+        
         </p>
       </section>
 
       <div class="back-link">
-        <a href="/works">← Back to WORKS</a>
+        <a href="/works">← WORKS一覧に戻る</a>
       </div>
     </div>
   </article>
@@ -47,7 +51,8 @@ import workImg from '../../assets/my-work-oil_002.jpg';
   .main-image {
     width: 100%;
     height: auto;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* 軽く影をつけて作品を浮かせる */
+    /* 油彩の質感を際立たせるための軽い影 */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
   }
   .info-container {
     line-height: 1.8;
@@ -55,6 +60,7 @@ import workImg from '../../assets/my-work-oil_002.jpg';
   .work-header h1 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
   }
   .year {
     color: #888;
@@ -68,6 +74,7 @@ import workImg from '../../assets/my-work-oil_002.jpg';
   }
   .description {
     margin-bottom: 4rem;
+    white-space: pre-wrap; /* 改行を反映させる設定 */
   }
   .back-link a {
     display: inline-block;
@@ -77,5 +84,6 @@ import workImg from '../../assets/my-work-oil_002.jpg';
   }
   .back-link a:hover {
     color: #000;
+    text-decoration: underline;
   }
 </style>
