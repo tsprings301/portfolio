@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import workImg from '../../assets/my-work-oil_002.jpg';
+---
+
+<Layout title="敵を倒せ！ | WORKS | Haru Torisawa">
+  <article class="work-detail">
+    <div class="image-container">
+      <Image src={workImg} alt="敵を倒せ！" class="main-image" />
+    </div>
+
+    <div class="info-container">
+      <header class="work-header">
+        <h1>『敵を倒せ！』</h1>
+        <p class="year">2025年</p>
+      </header>
+
+      <section class="spec">
+        <p>素材：キャンバスに油彩</p>
+        <p>サイズ：F100（1620×1303mm）</p>
+      </section>
+
+      <section class="description">
+        <p>
+          "Defeat the Enemy!""<br />
+        </p>
+      </section>
+
+      <div class="back-link">
+        <a href="/works">← Back to WORKS</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .work-detail {
+    padding-top: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .image-container {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .main-image {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* 軽く影をつけて作品を浮かせる */
+  }
+  .info-container {
+    line-height: 1.8;
+  }
+  .work-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .year {
+    color: #888;
+    margin-bottom: 2rem;
+  }
+  .spec {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+  }
+  .description {
+    margin-bottom: 4rem;
+  }
+  .back-link a {
+    display: inline-block;
+    color: #666;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .back-link a:hover {
+    color: #000;
+  }
+</style>
