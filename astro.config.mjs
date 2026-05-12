@@ -1,5 +1,8 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  // あなたのGitHubユーザー名に合わせたアドレス
+  site: 'https://tsprings301.github.io',
+  // リポジトリ名
+  base: '/portfolio',
+});
