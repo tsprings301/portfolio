@@ -1,48 +1,94 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-// 画像ファイルを「myImage」という名前で読み込みます
-import myImage from '@/assets/my-work-oil_001.JPEG';
 
-const artistName = "torisawa halu";
+// 画像のインポート
+import work1 from '../assets/my-work-oil_001.JPEG';
+import work2 from '../assets/my-work-oil_002.jpg';
+import work3 from '../assets/my-work-oil_003.jpg';
+import work4 from '../assets/my-work-oil_004.JPG';
+
+const slides = [
+  { src: work1, alt: "Work 01" },
+  { src: work2, alt: "Work 02" },
+  { src: work3, alt: "Work 03" },
+  { src: work4, alt: "Work 04" },
+];
 ---
 
-<Layout>
-    <main>
-        <h1>{artistName} のポートフォリオ</h1>
-        
-        <section class="gallery">
-            {/* 読み込んだ myImage を実際に表示する命令です */}
-            <Image 
-                src={myImage} 
-                alt="油彩作品 001" 
-                width={600} 
-                class="main-work"
-            />
-        </section>
-        
-        <p>ここに作品の説明やプロフィールを書いていきます。</p>
-    </main>
+<Layout title="Haru Torisawa Portfolio">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {slides.map((slide) => (
+        <div class="swiper-slide">
+          <Image src={slide.src} alt={slide.alt} width={1600} />
+        </div>
+      ))}
+    </div>
+    <!-- 必要であればページ送りボタンやドットを表示できます（今回はシンプルに画像のみ） -->
+    <div class="swiper-pagination"></div>
+  </div>
 </Layout>
 
+<script>
+  // Swiperの読み込み
+  import Swiper from 'swiper';
+  import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import 'swiper/css/effect-fade';
+
+  // 初期化
+  const swiper = new Swiper('.swiper', {
+    modules: [Pagination, Autoplay, EffectFade],
+    loop: true, // ループさせる
+    effect: 'fade', // フェードアウト・インで切り替え
+    speed: 1000, // 切り替え速度（1秒）
+    autoplay: {
+      delay: 4000, // 4秒ごとに自動切り替え
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+
 <style>
-    main {
-        margin: auto;
-        padding: 1rem;
-        width: 800px;
-        max-width: calc(100% - 2rem);
-        color: #333;
-        line-height: 1.6;
-        text-align: center;
-    }
-    h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1em;
-    }
-    .main-work {
-        border-radius: 8px; /* 角を少し丸くしておしゃれに */
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* 軽い影をつけて作品を浮かび上がらせます */
-        margin-bottom: 2rem;
-    }
+  /* --- 既存のスタイル --- */
+  .swiper {
+    width: 100%;
+    height: calc(100vh - 200px); 
+    margin-top: 2rem;
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* --- ドット（ページネーション）のカスタマイズ --- */
+  
+  /* ドット全体の配置 */
+  .swiper {
+    --swiper-pagination-bottom: 20px;
+  }
+
+  /* 通常のドットの状態 */
+  :global(.swiper-pagination-bullet) {
+    width: 10px;
+    height: 10px;
+    background: #ccc; /* 薄いグレー */
+    opacity: 1;
+    transition: all 0.3s ease; /* 変化を滑らかに */
+  }
+
+  /* 現在表示されているスライドのドット（強調） */
+  :global(.swiper-pagination-bullet-active) {
+    background: #333 !important; /* 濃いグレーまたは黒 */
+    width: 25px; /* 横長にして強調 */
+    border-radius: 5px; /* 横長にした時に角を丸める */
+  }
 </style>
