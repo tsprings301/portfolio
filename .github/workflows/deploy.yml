@@ -1,10 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
+  # mainブランチにコードがpushされたときに実行
   push:
-    branches: [main]
+    branches: ["main"]
+  # 手動実行も可能にする設定
   workflow_dispatch:
 
+# GitHub Pagesへのデプロイに必要な権限を設定
 permissions:
   contents: read
   pages: write
@@ -16,16 +19,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm install
+
       - name: Build Astro
         run: npm run build
-      - name: Upload artifact
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
