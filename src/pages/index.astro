@@ -31,21 +31,22 @@ const slides = [
 </Layout>
 
 <script>
-  // Swiperの読み込み
   import Swiper from 'swiper';
   import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/pagination';
   import 'swiper/css/effect-fade';
 
-  // 初期化
   const swiper = new Swiper('.swiper', {
     modules: [Pagination, Autoplay, EffectFade],
-    loop: true, // ループさせる
-    effect: 'fade', // フェードアウト・インで切り替え
-    speed: 1000, // 切り替え速度（1秒）
+    loop: true,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true // 前のスライドを完全に消してから次のスライドを表示する
+    },
+    speed: 1000,
     autoplay: {
-      delay: 4000, // 4秒ごとに自動切り替え
+      delay: 4000,
       disableOnInteraction: false,
     },
     pagination: {
@@ -56,11 +57,21 @@ const slides = [
 </script>
 
 <style>
-  /* --- 既存のスタイル --- */
   .swiper {
     width: 100%;
-    height: calc(100vh - 200px); 
+    /* 高さを少し抑えて、下にドット用のスペースを確保する */
+    height: calc(100vh - 250px); 
     margin-top: 2rem;
+    /* スライダーの下側に余白を作る */
+    margin-bottom: 50px; 
+    overflow: visible; /* ドットを外側に表示させるために必要 */
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff; /* 重なり防止のため背景を白に固定 */
   }
 
   .swiper-slide img {
@@ -69,26 +80,24 @@ const slides = [
     object-fit: contain;
   }
 
-  /* --- ドット（ページネーション）のカスタマイズ --- */
+  /* --- ドット（ページネーション）の位置調整 --- */
   
-  /* ドット全体の配置 */
-  .swiper {
-    --swiper-pagination-bottom: 20px;
+  :global(.swiper-pagination) {
+    /* 画像の下端からの距離。プラスの数値で画像の外側へ移動 */
+    bottom: -40px !important; 
   }
 
-  /* 通常のドットの状態 */
   :global(.swiper-pagination-bullet) {
     width: 10px;
     height: 10px;
-    background: #ccc; /* 薄いグレー */
+    background: #ccc;
     opacity: 1;
-    transition: all 0.3s ease; /* 変化を滑らかに */
+    transition: all 0.3s ease;
   }
 
-  /* 現在表示されているスライドのドット（強調） */
   :global(.swiper-pagination-bullet-active) {
-    background: #333 !important; /* 濃いグレーまたは黒 */
-    width: 25px; /* 横長にして強調 */
-    border-radius: 5px; /* 横長にした時に角を丸める */
+    background: #333 !important;
+    width: 25px;
+    border-radius: 5px;
   }
 </style>
