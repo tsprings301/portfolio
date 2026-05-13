@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// 画像のインポート
+import mainImg from '../../assets/my-work-oil_005.jpg';
+import cu1 from '../../assets/my-work-oil-cu_001.jpg';
+import cu2 from '../../assets/my-work-oil-cu_002.jpg';
+import cu3 from '../../assets/my-work-oil-cu_003.jpg';
+
+const closeups = [cu1, cu2, cu3];
+---
+
+<Layout title="作品名 005 | WORKS | Haru Torisawa">
+  <article class="work-detail">
+    <!-- メイン画像 -->
+    <div class="image-container">
+      <Image src={mainImg} alt="作品 005" class="main-image" />
+    </div>
+
+    <!-- 作品情報 -->
+    <div class="info-container">
+      <header class="work-header">
+        <h1>『黒く冷たい石のひび割れを指でなぞるように自転車で走る』</h1>
+        <p class="year">2026年</p>
+      </header>
+
+      <section class="spec">
+        <p>素材：キャンバスに油彩,クレヨン</p>
+        <p>サイズ：1,620×970mm</p>
+      </section>
+      <section class="description">
+        <p>卒業制作</p>
+      </section>
+
+      <!-- クローズアップ画像セクション -->
+      <section class="details-section">
+        <h2>Details</h2>
+        <div class="closeup-grid">
+          {closeups.map((img, index) => (
+            <div class="closeup-item">
+              <Image src={img} alt={`Closeup ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div class="back-link">
+        <a href="/works">← WORKS</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .work-detail {
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .image-container {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .main-image {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .work-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .year {
+    color: #888;
+    margin-bottom: 2rem;
+  }
+  .description {
+    margin-bottom: 4rem;
+    line-height: 1.8;
+  }
+
+  /* クローズアップ部分のスタイル */
+  .details-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+  .closeup-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .closeup-item img {
+    width: 100%;
+    height: auto;
+    /* クローズアップなので少し質感を強調 */
+    filter: saturate(1.05); 
+  }
+
+  .back-link a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+</style>
