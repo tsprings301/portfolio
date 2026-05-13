@@ -38,7 +38,8 @@ import Layout from '../layouts/Layout.astro';
   .contact-container {
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 2rem;
+    padding: 2rem 1rem; /* 左右に 1rem (約16px) の余白を追加 */
+    box-sizing: border-box; /* パディングを含めた幅で計算するように指定 */
   }
 
   h1 {
@@ -51,12 +52,14 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    width: 100%; /* 親要素の幅いっぱいに広げる */
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
   }
 
   label {
@@ -65,13 +68,15 @@ import Layout from '../layouts/Layout.astro';
   }
 
   input, textarea {
-    width: 100%;
+    width: 100%; /* 画面幅に合わせて伸縮 */
     padding: 0.8rem;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     font-size: 1rem;
     outline: none;
     transition: border-color 0.3s;
+    /* ボックスサイズの計算を固定 */
+    box-sizing: border-box; 
   }
 
   input:focus, textarea:focus {
@@ -81,7 +86,7 @@ import Layout from '../layouts/Layout.astro';
   .submit-button {
     width: 120px;
     padding: 1rem;
-    background-color: #4a4a4a;
+    background-color: #141313;
     color: white;
     border: none;
     cursor: pointer;
@@ -90,11 +95,10 @@ import Layout from '../layouts/Layout.astro';
     margin-top: 1rem;
   }
 
-  .submit-button:hover {
-    background-color: #333;
-  }
-
-  textarea {
-    resize: vertical;
+  /* スマホなど画面が狭い場合のみの微調整 */
+  @media (max-width: 600px) {
+    .submit-button {
+      width: 100%; /* スマホではボタンを横いっぱいに広げると押しやすくなります */
+    }
   }
 </style>
