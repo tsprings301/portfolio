@@ -1,19 +1,4 @@
 ---
-    import Layout from '../layouts/Layout.astro';
-    ---
-    <Layout title="ABOUT | Haru Torisawa">
-        <h1>ABOUT</h1>
-        <p>
-            <br />
-  Haru Torisawa<br />
-  鳥澤 春<br /><br />
-  2003年東京都立川市生まれ。<br />
-  2026年に武蔵野美術大学造形学部油絵学科油絵専攻を卒業後、<br />
-  同大学の共通絵画研究室に助手として在籍中。
-</p>
-    </Layout>
-
-    ---
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -21,9 +6,15 @@ import Layout from '../layouts/Layout.astro';
   <div class="about-container">
     <h1>ABOUT</h1>
     
-    <!-- 既存のプロフィールセクション -->
+    <!-- プロフィールセクション -->
     <section class="profile">
-      <p>ここにプロフィール文...</p>
+      <p>
+        Haru Torisawa<br />
+        鳥澤 春<br /><br />
+        2003年東京都立川市生まれ。<br />
+        2026年に武蔵野美術大学造形学部油絵学科油絵専攻を卒業後、<br />
+        同大学の共通絵画研究室に助手として在籍中。
+      </p>
     </section>
 
     <!-- Instagramリンクセクション -->
@@ -44,11 +35,23 @@ import Layout from '../layouts/Layout.astro';
   .about-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 4rem 1.5rem; /* 上下の余白を少し増やしてバランスを調整 */
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.1em;
+  }
+
+  .profile {
+    line-height: 2; /* 読みやすさのために行間を広く */
+    letter-spacing: 0.05em;
+    color: #333;
+    margin-bottom: 5rem;
   }
 
   .sns-links {
-    margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid #eee;
     display: flex;
@@ -59,9 +62,9 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
     text-decoration: none;
-    color: #333; /* モノクロ（濃いグレー） */
+    color: #333;
     transition: opacity 0.3s ease;
   }
 
@@ -70,13 +73,11 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .instagram-icon {
-    /* アイコン自体の色調整 */
     color: #333;
   }
 
   .instagram-id {
     font-size: 0.85rem;
     letter-spacing: 0.05em;
-    font-family: sans-serif;
   }
 </style>
