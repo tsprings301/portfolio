@@ -4,11 +4,79 @@
     <Layout title="ABOUT | Haru Torisawa">
         <h1>ABOUT</h1>
         <p>
-  Haru Torisawa<br /><br /><br /><br />
+            <br />
+  Haru Torisawa<br />
   鳥澤 春<br /><br />
   2003年東京都立川市生まれ。<br />
   2026年に武蔵野美術大学造形学部油絵学科油絵専攻を卒業後、<br />
   同大学の共通絵画研究室に助手として在籍中。
 </p>
     </Layout>
-    ```
+
+    ---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="ABOUT | Haru Torisawa">
+  <div class="about-container">
+    <h1>ABOUT</h1>
+    
+    <!-- 既存のプロフィールセクション -->
+    <section class="profile">
+      <p>ここにプロフィール文...</p>
+    </section>
+
+    <!-- Instagramリンクセクション -->
+    <section class="sns-links">
+      <a href="https://www.instagram.com/t.springs301" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <span class="instagram-id">@t.springs301</span>
+      </a>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .sns-links {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sns-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #333; /* モノクロ（濃いグレー） */
+    transition: opacity 0.3s ease;
+  }
+
+  .sns-links a:hover {
+    opacity: 0.6;
+  }
+
+  .instagram-icon {
+    /* アイコン自体の色調整 */
+    color: #333;
+  }
+
+  .instagram-id {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    font-family: sans-serif;
+  }
+</style>
