@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+// 拡張子が.jpgであることを確認してインポート
+import workImg from '../../assets/my-work-oil_004.jpg';
+---
+
+<Layout title="敵を倒せ！ | WORKS | Haru Torisawa">
+  <article class="work-detail">
+    <!-- 作品メイン画像 -->
+    <div class="image-container">
+      <Image src={workImg} alt="すべての音" class="main-image" />
+    </div>
+
+    <!-- 作品情報セクション -->
+    <div class="info-container">
+      <header class="work-header">
+        <h1>『すべての音』</h1>
+        <p class="year">2023年</p>
+      </header>
+
+      <section class="spec">
+        <p>素材：キャンバスに油彩</p>
+        <p>サイズ：1,455×1,120mm</p>
+      </section>
+
+      <section class="description">
+        <p>
+          さっき火事だと騒ぎましたのは　虹でございました。もう１時間も　りんと張って居ります<br />
+「報告」　宮澤賢治
+         </p>
+      </section>
+
+      <div class="back-link">
+        <a href="/works">← WORKS</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .work-detail {
+    padding-top: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .image-container {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .main-image {
+    width: 100%;
+    height: auto;
+    /* 油彩の質感を際立たせるための軽い影 */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+  }
+  .info-container {
+    line-height: 1.8;
+  }
+  .work-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .year {
+    color: #888;
+    margin-bottom: 2rem;
+  }
+  .spec {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+  }
+  .description {
+    margin-bottom: 4rem;
+    white-space: pre-wrap; /* 改行を反映させる設定 */
+  }
+  .back-link a {
+    display: inline-block;
+    color: #666;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .back-link a:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+// 拡張子が.jpgであることを確認してインポート
+import workImg from '../../assets/my-work-oil_003.jpg';
+---
+
+<Layout title="敵を倒せ！ | WORKS | Haru Torisawa">
+  <article class="work-detail">
+    <!-- 作品メイン画像 -->
+    <div class="image-container">
+      <Image src={workImg} alt="敵を倒せ！" class="main-image" />
+    </div>
+
+    <!-- 作品情報セクション -->
+    <div class="info-container">
+      <header class="work-header">
+        <h1>『でっかいカニ』</h1>
+        <p class="year">2025年</p>
+      </header>
+
+      <section class="spec">
+        <p>素材：キャンバスに油彩</p>
+        <p>サイズ：1,400×1,120mm</p>
+      </section>
+
+      <section class="description">
+        <p>
+          バイト先の厨房。ヤな笑顔の関西弁の料理長。<br />
+今日は店の親会社の社長の息子が、友達とのディナーで個室に入った。<br />
+「えーすごい！綺麗！」俺がテキトーに入れた体に悪そうな色のモクテルではしゃいでいる。<br />
+でっかいカニ。人の欲望がそのまま柄になったみたいな派手で大きな皿に乗って生きたまま運ばれてくカニ。<br />
+あんなに御膳立てされて本人（本カニ?）だけが嬉しくなさそう。<br />
+「うわ！うごいた！」見えてないけど、話したこともないけど、どんな顔かわかる。<br />
+戻されたカニが、まな板の上で勢いよく包丁で足を離される。<br />
+手際が良いから命がすぐに食材の形になる。<br />
+足?<br />
+カニのあれは、どっから手でどっからが足?<br />
+社長の息子たちが店を出る時、厨房の中から彼らの歩く足だけが見えた。<br />
+         </p>
+      </section>
+
+      <div class="back-link">
+        <a href="/works">← WORKS</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .work-detail {
+    padding-top: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .image-container {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .main-image {
+    width: 100%;
+    height: auto;
+    /* 油彩の質感を際立たせるための軽い影 */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+  }
+  .info-container {
+    line-height: 1.8;
+  }
+  .work-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .year {
+    color: #888;
+    margin-bottom: 2rem;
+  }
+  .spec {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+  }
+  .description {
+    margin-bottom: 4rem;
+    white-space: pre-wrap; /* 改行を反映させる設定 */
+  }
+  .back-link a {
+    display: inline-block;
+    color: #666;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .back-link a:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+</style>
