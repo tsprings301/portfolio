@@ -1,15 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-// 拡張子が.jpgであることを確認してインポート
-import workImg from '../../assets/my-work-oil_001.JPEG';
+
+// 画像のインポート
+import mainImg from '../../assets/my-work-oil_001.JPEG';
+import cu4 from '../../assets/my-work-oil-cu_004.jpg';
+
+const closeups = [cu4];
 ---
 
-<Layout title="敵を倒せ！ | WORKS | Haru Torisawa">
+<Layout title="無題 | WORKS | Haru Torisawa">
   <article class="work-detail">
     <!-- 作品メイン画像 -->
     <div class="image-container">
-      <Image src={workImg} alt="無題" class="main-image" />
+      <Image src={mainImg} alt="無題" class="main-image" />
     </div>
 
     <!-- 作品情報セクション -->
@@ -25,13 +29,23 @@ import workImg from '../../assets/my-work-oil_001.JPEG';
       </section>
 
       <section class="description">
-        <p>
-          
-         </p>
+        <p>ここに作品の解説を記述します。</p>
+      </section>
+
+      <!-- クローズアップ画像セクション -->
+      <section class="details-section">
+        <h2>Details</h2>
+        <div class="closeup-grid">
+          {closeups.map((img, index) => (
+            <div class="closeup-item">
+              <Image src={img} alt={`Closeup ${index + 4}`} />
+            </div>
+          ))}
+        </div>
       </section>
 
       <div class="back-link">
-        <a href="/works">← WORKS</a>
+        <a href="/works">← WORKS一覧に戻る</a>
       </div>
     </div>
   </article>
@@ -39,9 +53,10 @@ import workImg from '../../assets/my-work-oil_001.JPEG';
 
 <style>
   .work-detail {
-    padding-top: 2rem;
+    padding: 2rem 1rem;
     max-width: 900px;
     margin: 0 auto;
+    box-sizing: border-box;
   }
   .image-container {
     margin-bottom: 3rem;
@@ -50,39 +65,48 @@ import workImg from '../../assets/my-work-oil_001.JPEG';
   .main-image {
     width: 100%;
     height: auto;
-    /* 油彩の質感を際立たせるための軽い影 */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
-  }
-  .info-container {
-    line-height: 1.8;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   }
   .work-header h1 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    letter-spacing: 0.05em;
   }
   .year {
     color: #888;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   .spec {
     margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
     font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
   }
   .description {
     margin-bottom: 4rem;
-    white-space: pre-wrap; /* 改行を反映させる設定 */
+    line-height: 1.8;
+  }
+  .details-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+  .closeup-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .closeup-item img {
+    width: 100%;
+    height: auto;
   }
   .back-link a {
-    display: inline-block;
     color: #666;
+    text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.3s;
   }
   .back-link a:hover {
-    color: #000;
     text-decoration: underline;
   }
 </style>
