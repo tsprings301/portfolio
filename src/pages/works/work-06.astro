@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// 画像のインポート
+import mainImg from '../../assets/my-work-oil_006.jpg';
+---
+
+<Layout title="ちょーだい | WORKS | Haru Torisawa">
+  <article class="work-detail">
+    <div class="image-container">
+      <Image src={mainImg} alt="ちょーだい" class="main-image" />
+    </div>
+
+    <div class="info-container">
+      <header class="work-header">
+        <h1>『ちょーだい』</h1>
+        <p class="year">2025年</p>
+      </header>
+
+      <section class="spec">
+        <p>素材：キャンバスに油彩、クレヨン</p>
+        <p>サイズ：1167×910mm</p>
+      </section>
+
+      <section class="description">
+        <p>
+          メルボルンの名前のないビーチ。
+砂浜の少し離れたところでインクレディブルファミリーみたいな家族がバカンスしている。
+近くに来ていたカモメに、パンをひとかけらあげたら、カモメの大群が現れてとんでもないことになった。
+オーストラリアはカモメまで色白でムキムキ。
+少し怯えているけど目は人間みたい。
+〈ファインディング・ニモ〉に出てくるカモメを思い出した。あそこもオーストラリアだ。
+友人がカモメたちを完璧に操り始める。
+高校3年の秋、同じアトリエでダンジョーくんが描いていた、プールにベッドが沈んでいる絵がずっと気になっている。
+あの景色はどこなのだろう。
+大きいから部屋には入らないけどちょっと欲しい。
+        </p>
+      </section>
+
+      <div class="back-link">
+        <a href="/works">← WORKS</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .work-detail {
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .image-container {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .main-image {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .work-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .year {
+    color: #888;
+    margin-bottom: 1.5rem;
+  }
+  .spec {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+  }
+  .description {
+    margin-bottom: 4rem;
+    line-height: 1.8;
+  }
+  .back-link a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+</style>
